@@ -1,0 +1,127 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: lightblue;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+section {
+    padding: 40px 20px;
+    margin: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #0056b3;
+    text-align: center;
+}
+
+/* Styles pour l'image */
+.profile-photo {
+    display: block;
+    margin: 0 auto;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease-in-out; /* Ajoute une transition douce */
+}
+
+/* Effet de survol sur la photo */
+.profile-photo:hover {
+    transform: scale(1.05); /* Agrandit l'image de 5% au survol */
+}
+
+/* Styles pour le nom */
+.mon-nom {
+    font-weight: bold;
+    color: #0056b3;
+    transition: transform 0.3s ease-in-out; /* Ajoute une transition douce */
+    display: inline-block; /* Nécessaire pour les transformations */
+}
+
+/* Effet de survol sur le nom */
+.mon-nom:hover {
+    transform: translateY(-5px); /* Déplace le nom de 5px vers le haut au survol */
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-top: 20px;
+}
+
+/* Styles pour les catégories de compétences */
+.competence-category {
+    margin-bottom: 30px;
+}
+
+.competence-category h3 {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+}
+
+.competence-category ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.competence-category li {
+    background-color: #f8f9fa;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    border-left: 4px solid #007bff;
+}
+
+/* Styles pour les cartes de projets */
+.projet-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.projet-card h3 {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
