@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - BOUSSAHEL Abdelhakim</title>
+    <title>Contact Direct - BOUSSAHEL Abdelhakim</title>
     <style>
         * {
             margin: 0;
@@ -26,67 +26,27 @@
             border-radius: 15px;
             padding: 40px;
             width: 100%;
-            max-width: 600px;
+            max-width: 500px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
         
         h1 {
             color: #333;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        
-        .subtitle {
-            color: #666;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .contact-method {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
             margin-bottom: 20px;
-            border-left: 4px solid #3498db;
-        }
-        
-        .contact-method h3 {
-            color: #2c3e50;
-            margin-bottom: 10px;
+            text-align: center;
         }
         
         .email-display {
-            background: white;
+            background: #f8f9fa;
             padding: 15px;
             border-radius: 8px;
             border: 2px solid #e0e0e0;
-            margin: 15px 0;
+            margin: 20px 0;
             font-size: 18px;
             font-weight: bold;
             color: #2c3e50;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .copy-btn {
-            background: #3498db;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        
-        .copy-btn:hover {
-            background: #2980b9;
-        }
-        
-        .form-container {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
+            text-align: center;
+            word-break: break-all;
         }
         
         input, textarea {
@@ -123,26 +83,6 @@
         
         .submit-btn:hover {
             background: #27ae60;
-        }
-        
-        .whatsapp-btn {
-            background: #25D366;
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .whatsapp-btn:hover {
-            background: #1da851;
         }
         
         .message {
@@ -183,71 +123,35 @@
             .contact-container {
                 padding: 20px;
             }
-            
-            .email-display {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
         }
     </style>
 </head>
 <body>
     <div class="contact-container">
-        <h1>📨 Contactez-moi</h1>
-        <p class="subtitle">BOUSSAHEL Abdelhakim - Développeur</p>
+        <h1>📨 Contact Direct</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 20px;">
+            BOUSSAHEL Abdelhakim - Développeur<br>
+            <strong>Email de destination:</strong>
+        </p>
         
-        <!-- Méthode 1 : Copier l'email -->
-        <div class="contact-method">
-            <h3>📋 Méthode 1 : Copier mon email</h3>
-            <p>Copiez cette adresse et envoyez-moi un email directement :</p>
-            <div class="email-display">
-                <span id="email-text">carteat22@gmail.com</span>
-                <button class="copy-btn" onclick="copyEmail()">
-                    <span id="copy-text">📋 Copier</span>
-                </button>
-            </div>
-            <p>Collez cette adresse dans votre Gmail : <strong>carteat22@gmail.com</strong></p>
+        <div class="email-display">
+            carteat22@gmail.com
         </div>
         
-        <!-- Méthode 2 : Formulaire ultra simple -->
-        <div class="contact-method">
-            <h3>📝 Méthode 2 : Formulaire direct</h3>
-            <p>Ce formulaire ouvre directement Gmail :</p>
+        <p style="text-align: center; color: #666; margin-bottom: 20px;">
+            Remplissez ce formulaire, il ouvrira directement Gmail avec votre message.
+        </p>
+        
+        <form id="simpleForm">
+            <input type="text" id="name" placeholder="Votre nom *" required>
+            <input type="email" id="senderEmail" placeholder="Votre email *" required>
+            <input type="text" id="subject" placeholder="Sujet du message *" required>
+            <textarea id="msg" placeholder="Votre message... *" required></textarea>
             
-            <div class="form-container">
-                <form id="simpleForm">
-                    <input type="text" id="name" placeholder="Votre nom" required>
-                    <input type="email" id="senderEmail" placeholder="Votre email" required>
-                    <textarea id="msg" placeholder="Votre message..." required></textarea>
-                    
-                    <button type="submit" class="submit-btn">📧 Ouvrir Gmail avec ce message</button>
-                </form>
-            </div>
-            
-            <div id="formMessage" class="message"></div>
-        </div>
+            <button type="submit" class="submit-btn">📧 Ouvrir Gmail avec ce message</button>
+        </form>
         
-        <!-- Méthode 3 : WhatsApp -->
-        <div class="contact-method">
-            <h3>💬 Méthode 3 : WhatsApp</h3>
-            <p>Contactez-moi directement sur WhatsApp :</p>
-            <button class="whatsapp-btn" onclick="openWhatsApp()">
-                <span>💬 Envoyer un message WhatsApp</span>
-            </button>
-        </div>
-        
-        <!-- Méthode 4 : Téléphone -->
-        <div class="contact-method">
-            <h3>📱 Méthode 4 : Appel téléphonique</h3>
-            <p>Appelez-moi directement :</p>
-            <div class="email-display">
-                <span>📞 07 75 86 38 56</span>
-                <button class="copy-btn" onclick="callPhone()">
-                    <span>📱 Appeler</span>
-                </button>
-            </div>
-        </div>
+        <div id="formMessage" class="message"></div>
         
         <div class="back-home">
             <a href="index.html">← Retour à l'accueil</a>
@@ -255,30 +159,18 @@
     </div>
 
     <script>
-        // Fonction pour copier l'email
-        function copyEmail() {
-            const email = "carteat22@gmail.com";
-            navigator.clipboard.writeText(email).then(() => {
-                const copyBtn = document.getElementById('copy-text');
-                copyBtn.innerHTML = '✅ Copié !';
-                setTimeout(() => {
-                    copyBtn.innerHTML = '📋 Copier';
-                }, 2000);
-                
-                showMessage('Email copié ! Collez-le dans votre Gmail.', 'success');
-            });
-        }
-        
-        // Fonction pour le formulaire
+        // Fonction pour le formulaire - Solution SIMPLE
         document.getElementById('simpleForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('senderEmail').value.trim();
+            const subject = document.getElementById('subject').value.trim();
             const message = document.getElementById('msg').value.trim();
             
-            if (!name || !email || !message) {
-                showMessage('Veuillez remplir tous les champs.', 'error');
+            // Validation simple
+            if (!name || !email || !subject || !message) {
+                showMessage('Veuillez remplir tous les champs obligatoires (*).', 'error');
                 return;
             }
             
@@ -289,77 +181,54 @@
                 return;
             }
             
-            // Préparer l'email
-            const subject = `Message de ${name} depuis votre portfolio`;
-            const body = `Nom: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}%0D%0A%0D%0A---%0D%0AEnvoyé depuis votre portfolio.`;
+            // Préparer l'email pour Gmail
+            const emailSubject = subject || `Message de ${name}`;
+            const emailBody = `Bonjour Abdelhakim,%0D%0A%0D%0A
+Nom: ${name}%0D%0A
+Email: ${email}%0D%0A%0D%0A
+Message:%0D%0A${message}%0D%0A%0D%0A
+---%0D%0A
+Ce message a été envoyé depuis votre formulaire de contact.`;
             
-            // Ouvrir Gmail
-            window.location.href = `mailto:carteat22@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            // OUVERTURE DIRECTE DE GMAIL
+            const gmailUrl = `mailto:carteat22@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            window.open(gmailUrl, '_blank');
             
-            // Afficher message de confirmation
-            showMessage('Gmail s\'ouvre... Copiez-collez si nécessaire.', 'success');
+            // Message de confirmation
+            showMessage('✅ Gmail s\'ouvre avec votre message pré-rempli!', 'success');
             
-            // Réinitialiser le formulaire
+            // Réinitialiser après 2 secondes
             setTimeout(() => {
                 document.getElementById('simpleForm').reset();
-            }, 1000);
+                document.getElementById('formMessage').style.display = 'none';
+            }, 3000);
         });
-        
-        // Fonction WhatsApp
-        function openWhatsApp() {
-            const message = "Bonjour Abdelhakim, je vous contacte depuis votre portfolio.";
-            window.open(`https://wa.me/33775863856?text=${encodeURIComponent(message)}`, '_blank');
-        }
-        
-        // Fonction Appel téléphonique
-        function callPhone() {
-            window.location.href = 'tel:+33775863856';
-        }
         
         // Fonction pour afficher les messages
         function showMessage(text, type) {
             const messageDiv = document.getElementById('formMessage');
             messageDiv.textContent = text;
             messageDiv.className = `message ${type}`;
-            
-            setTimeout(() => {
-                messageDiv.style.display = 'none';
-            }, 5000);
+            messageDiv.style.display = 'block';
         }
         
-        // Astuce pour Gmail : ouvre directement compose
-        console.log("Pour recevoir des emails, assurez-vous que:");
-        console.log("1. carteat22@gmail.com existe");
-        console.log("2. Vérifiez vos SPAMS");
-        console.log("3. Testez en vous envoyant un email directement depuis Gmail");
-        
-        // Petit test au chargement
+        // Ajout d'un lien de secours pour ceux qui n'ont pas Gmail configuré
         window.addEventListener('load', () => {
-            console.log("✅ Page de contact chargée");
-            console.log("📧 Destination: carteat22@gmail.com");
-            console.log("📞 Téléphone: 07 75 86 38 56");
-        });
-        
-        // Ajouter un QR Code visuel pour Gmail
-        const qrCodeDiv = document.createElement('div');
-        qrCodeDiv.innerHTML = `
-            <div style="text-align: center; margin-top: 20px; padding: 15px; background: #f0f7ff; border-radius: 10px;">
-                <h4 style="color: #2c3e50; margin-bottom: 10px;">📱 QR Code pour Gmail</h4>
-                <p style="color: #666; font-size: 14px;">Scannez pour envoyer un email rapidement :</p>
-                <div style="background: white; padding: 15px; display: inline-block; border-radius: 8px; margin: 10px 0;">
-                    <!-- QR Code simplifié -->
-                    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; width: 120px; height: 120px; margin: 0 auto;">
-                        ${Array(25).fill().map((_, i) => 
-                            `<div style="background: ${Math.random() > 0.5 ? '#000' : '#fff'}; border-radius: 2px;"></div>`
-                        ).join('')}
-                    </div>
+            console.log("📧 Formulaire simple chargé - Destination: carteat22@gmail.com");
+            
+            // Ajouter un message d'alternative
+            const alternativeDiv = document.createElement('div');
+            alternativeDiv.innerHTML = `
+                <div style="margin-top: 20px; padding: 10px; background: #fff8e1; border-radius: 8px; border-left: 4px solid #ffc107;">
+                    <p style="margin: 0; font-size: 14px; color: #856404;">
+                        <strong>Note:</strong> Si Gmail ne s'ouvre pas automatiquement, 
+                        envoyez votre email manuellement à <strong>carteat22@gmail.com</strong>
+                    </p>
                 </div>
-                <p style="color: #3498db; font-size: 12px; margin-top: 5px;">carteat22@gmail.com</p>
-            </div>
-        `;
-        
-        // Insérer après le premier contact-method
-        document.querySelector('.contact-method').after(qrCodeDiv);
+            `;
+            
+            document.querySelector('.submit-btn').after(alternativeDiv);
+        });
     </script>
 </body>
 </html>
