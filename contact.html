@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Portfolio - BOUSSAHEL Abdelhakim</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Ajout de EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         /* Reset et styles de base */
         * {
@@ -186,6 +188,13 @@
             background-color: var(--primary-color);
             transform: translateY(-3px);
             box-shadow: var(--shadow);
+        }
+
+        button[type="submit"]:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
 
         /* Message de validation */
@@ -382,7 +391,7 @@
                         <label for="message">Message :</label>
                         <textarea id="message" name="message" required placeholder="Votre message..."></textarea>
                     </div>
-                    <button type="submit">Envoyer</button>
+                    <button type="submit" id="submitBtn">Envoyer</button>
                 </form>
                 <div class="loading" id="loading">
                     <div class="spinner"></div>
@@ -415,7 +424,6 @@
                     </div>
                 </div>
                 
-                
                 <div>
                     <h3>Réseaux sociaux</h3>
                     <div class="social-links">
@@ -434,12 +442,16 @@
     </footer>
 
     <script>
+        // Initialisation d'EmailJS
+        // REMPLACEZ CES VALEURS AVEC LES VÔTRES APRÈS INSCRIPTION SUR EMAILJS
+        emailjs.init("YOUR_PUBLIC_KEY"); // Votre clé publique EmailJS
+        
         document.addEventListener('DOMContentLoaded', function() {
             const contactForm = document.getElementById('contactForm');
             const validationMessage = document.getElementById('validationMessage');
             const loading = document.getElementById('loading');
+            const submitBtn = document.getElementById('submitBtn');
             
-            // Simuler l'envoi du formulaire
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
@@ -458,22 +470,45 @@
                     return;
                 }
                 
-                // Simuler l'envoi avec un délai
+                // Désactiver le bouton et afficher le loading
+                submitBtn.disabled = true;
                 loading.style.display = 'block';
                 validationMessage.style.display = 'none';
                 
-                setTimeout(() => {
+                // Préparer les paramètres pour EmailJS
+                const templateParams = {
+                    name: nom,
+                    email: email,
+                    message: message,
+                    to_email: 'carteat22@gmail.com'
+                };
+                
+                // Envoyer l'email via EmailJS
+                // REMPLACEZ CES PARAMÈTRES AVEC LES VÔTRES
+                emailjs.send(
+                    'YOUR_SERVICE_ID',     // Votre Service ID
+                    'YOUR_TEMPLATE_ID',    // Votre Template ID
+                    templateParams
+                )
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
                     loading.style.display = 'none';
-                    
-                    // En production, ici vous enverriez les données à un serveur
-                    // Pour cette démo, on simule juste un envoi réussi
+                    submitBtn.disabled = false;
                     
                     // Afficher le message de succès
                     showMessage('Votre message a été envoyé avec succès ! Je vous répondrai dans les plus brefs délais.', 'success');
                     
                     // Réinitialiser le formulaire
                     contactForm.reset();
-                }, 1500);
+                })
+                .catch(function(error) {
+                    console.log('FAILED...', error);
+                    loading.style.display = 'none';
+                    submitBtn.disabled = false;
+                    
+                    // Afficher le message d'erreur
+                    showMessage('Une erreur est survenue. Veuillez réessayer ou me contacter directement à carteat22@gmail.com', 'error');
+                });
             });
             
             function isValidEmail(email) {
