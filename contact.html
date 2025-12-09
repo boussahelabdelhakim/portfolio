@@ -21,33 +21,39 @@
             padding: 20px;
         }
         
-        .form-container {
+        .container {
             background: white;
             width: 100%;
             max-width: 600px;
             border-radius: 20px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
             overflow: hidden;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
         
         .header {
             background: linear-gradient(135deg, #2c3e50, #3498db);
             color: white;
-            padding: 40px 30px;
+            padding: 40px;
             text-align: center;
         }
         
         .header h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             margin-bottom: 10px;
         }
         
         .header p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             opacity: 0.9;
         }
         
-        .form-content {
+        .form-section {
             padding: 40px;
         }
         
@@ -61,6 +67,11 @@
             font-weight: 600;
             color: #2c3e50;
             font-size: 16px;
+        }
+        
+        .required::after {
+            content: " *";
+            color: #e74c3c;
         }
         
         input, textarea, select {
@@ -77,7 +88,7 @@
             outline: none;
             border-color: #3498db;
             background: white;
-            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
         }
         
         textarea {
@@ -87,7 +98,7 @@
         }
         
         .submit-btn {
-            background: linear-gradient(135deg, #3498db, #2c3e50);
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
             color: white;
             border: none;
             padding: 18px 40px;
@@ -97,160 +108,122 @@
             cursor: pointer;
             width: 100%;
             transition: all 0.3s;
-            margin-top: 10px;
+            margin-top: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
         }
         
         .submit-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 10px 25px rgba(46, 204, 113, 0.3);
         }
         
-        .submit-btn:disabled {
-            background: #95a5a6;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-        
-        .status-message {
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 10px;
-            display: none;
-            font-size: 16px;
-            line-height: 1.5;
-        }
-        
-        .success {
-            background: linear-gradient(135deg, #d4edda, #c3e6cb);
-            color: #155724;
-            border-left: 5px solid #2ecc71;
-            display: block !important;
-            animation: fadeIn 0.5s;
-        }
-        
-        .error {
-            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
-            color: #721c24;
-            border-left: 5px solid #e74c3c;
-            display: block !important;
-            animation: fadeIn 0.5s;
-        }
-        
-        .email-confirmation {
+        .info-box {
             background: #e8f4fc;
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
             margin: 30px 0;
             border-left: 5px solid #3498db;
         }
         
-        .email-confirmation h3 {
+        .info-box h3 {
             color: #2c3e50;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
-        .contact-info {
+        .destination-email {
+            background: white;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            border: 2px dashed #3498db;
+            font-weight: bold;
+            font-size: 18px;
+            color: #2c3e50;
+        }
+        
+        .contact-methods {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 15px;
             margin-top: 30px;
         }
         
-        .info-box {
+        .contact-btn {
             background: #f8f9fa;
-            padding: 20px;
+            border: 2px solid #e0e0e0;
+            padding: 15px;
             border-radius: 10px;
             text-align: center;
+            cursor: pointer;
             transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-        
-        .info-box:hover {
-            border-color: #3498db;
-            transform: translateY(-5px);
-        }
-        
-        .info-box i {
-            font-size: 2rem;
-            color: #3498db;
-            margin-bottom: 10px;
-        }
-        
-        .info-box p {
             font-weight: 600;
             color: #2c3e50;
-            font-size: 15px;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .contact-btn:hover {
+            border-color: #3498db;
+            transform: translateY(-3px);
         }
         
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .contact-btn.whatsapp {
+            border-color: #25D366;
+            color: #25D366;
         }
         
-        .spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s linear infinite;
+        .contact-btn.phone {
+            border-color: #9b59b6;
+            color: #9b59b6;
         }
         
         @media (max-width: 768px) {
-            .form-container {
+            .container {
                 margin: 10px;
             }
             
-            .header h1 {
-                font-size: 2.2rem;
-            }
-            
-            .form-content {
+            .header, .form-section {
                 padding: 25px;
             }
             
-            .contact-info {
+            .contact-methods {
                 grid-template-columns: 1fr;
             }
         }
         
-        .required::after {
-            content: " *";
-            color: #e74c3c;
+        .instructions {
+            background: #fff8e1;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border-left: 5px solid #ffb300;
+        }
+        
+        .instructions h4 {
+            color: #ff8f00;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="form-container">
+    <div class="container">
         <div class="header">
             <h1><i class="fas fa-envelope"></i> Contact Direct</h1>
-            <p>Envoyez-moi un message directement dans ma boîte email</p>
+            <p>Formulaire qui ouvre Gmail avec votre message pré-rempli</p>
         </div>
         
-        <div class="form-content">
-            <!-- Formulaire Getform.io -->
-            <form id="contactForm" action="https://getform.io/f/zbnkqrpa" method="POST">
-                <!-- Champs cachés pour configuration -->
-                <input type="hidden" name="_to" value="carteat22@gmail.com">
-                <input type="hidden" name="_subject" value="Nouveau message depuis Portfolio - BOUSSAHEL Abdelhakim">
-                <input type="hidden" name="_replyto" value="{{email}}">
-                <input type="hidden" name="_template" value="table">
-                
+        <div class="form-section">
+            <!-- Formulaire SIMPLE qui ouvre Gmail directement -->
+            <form id="contactForm">
                 <div class="form-group">
                     <label for="name" class="required">Votre nom complet</label>
                     <input type="text" id="name" name="name" required 
@@ -260,24 +233,18 @@
                 <div class="form-group">
                     <label for="email" class="required">Votre adresse email</label>
                     <input type="email" id="email" name="email" required 
-                           placeholder="exemple@gmail.com">
+                           placeholder="votre.email@gmail.com">
                 </div>
                 
                 <div class="form-group">
-                    <label for="phone">Numéro de téléphone (optionnel)</label>
-                    <input type="tel" id="phone" name="phone" 
-                           placeholder="07 00 00 00 00">
-                </div>
-                
-                <div class="form-group">
-                    <label for="subject" class="required">Sujet du message</label>
-                    <select id="subject" name="subject" required>
-                        <option value="">Sélectionnez un sujet</option>
-                        <option value="Demande de projet">💼 Demande de projet</option>
-                        <option value="Proposition d'emploi">👔 Proposition d'emploi</option>
-                        <option value="Demande d'information">❓ Demande d'information</option>
-                        <option value="Collaboration">🤝 Collaboration</option>
-                        <option value="Autre">📌 Autre</option>
+                    <label for="subject">Sujet du message</label>
+                    <select id="subject" name="subject">
+                        <option value="">Choisissez un sujet</option>
+                        <option value="💼 Demande de projet">💼 Demande de projet</option>
+                        <option value="👔 Proposition d'emploi">👔 Proposition d'emploi</option>
+                        <option value="❓ Demande d'information">❓ Demande d'information</option>
+                        <option value="🤝 Collaboration">🤝 Collaboration</option>
+                        <option value="📌 Autre">📌 Autre</option>
                     </select>
                 </div>
                 
@@ -288,217 +255,232 @@
                 </div>
                 
                 <button type="submit" class="submit-btn" id="submitBtn">
-                    <span id="btnText">
-                        <i class="fas fa-paper-plane"></i> Envoyer le message
-                    </span>
+                    <i class="fas fa-paper-plane"></i>
+                    <span id="btnText">Ouvrir Gmail avec ce message</span>
                 </button>
             </form>
             
-            <div id="statusMessage" class="status-message"></div>
-            
-            <div class="email-confirmation">
-                <h3><i class="fas fa-check-circle"></i> Où va votre message ?</h3>
-                <p>Votre message sera envoyé directement à :</p>
-                <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0; font-weight: bold; color: #2c3e50; text-align: center;">
-                    <i class="fas fa-envelope" style="color: #3498db; margin-right: 10px;"></i>
-                    carteat22@gmail.com
-                </div>
-                <p style="font-size: 14px; color: #666;">
-                    <i class="fas fa-shield-alt"></i> Vos informations ne seront utilisées que pour vous répondre.
-                </p>
+            <div class="info-box">
+                <h3><i class="fas fa-check-circle"></i> Comment ça marche ?</h3>
+                <p>1. Remplissez le formulaire ci-dessus</p>
+                <p>2. Gmail s'ouvre automatiquement avec votre message</p>
+                <p>3. Cliquez sur "Envoyer" dans Gmail</p>
+                <p>4. Je reçois immédiatement votre message !</p>
             </div>
             
-            <div class="contact-info">
-                <div class="info-box">
-                    <i class="fas fa-envelope-open-text"></i>
-                    <p>Réponse sous 24h</p>
-                </div>
-                <div class="info-box">
-                    <i class="fas fa-user-check"></i>
-                    <p>Confidentialité garantie</p>
-                </div>
-                <div class="info-box">
-                    <i class="fas fa-mobile-alt"></i>
-                    <p>07 75 86 38 56</p>
-                </div>
-                <div class="info-box">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p>Toulouse, France</p>
-                </div>
+            <div class="destination-email">
+                <i class="fas fa-envelope" style="color: #3498db; margin-right: 10px;"></i>
+                Destinataire : <span style="color: #e74c3c;">carteat22@gmail.com</span>
             </div>
             
-            <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
-                <p style="color: #666; font-size: 14px;">
-                    <i class="fas fa-info-circle"></i> 
-                    En cas de problème, contactez-moi directement à 
-                    <a href="mailto:carteat22@gmail.com" style="color: #3498db; font-weight: bold;">carteat22@gmail.com</a>
-                </p>
+            <div class="instructions">
+                <h4><i class="fas fa-exclamation-triangle"></i> Important</h4>
+                <p>Si Gmail ne s'ouvre pas automatiquement :</p>
+                <p>1. Copiez cette adresse : <strong>carteat22@gmail.com</strong></p>
+                <p>2. Ouvrez Gmail manuellement</p>
+                <p>3. Collez l'adresse et envoyez votre message</p>
+            </div>
+            
+            <div class="contact-methods">
+                <div class="contact-btn" onclick="openWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </div>
+                <div class="contact-btn phone" onclick="callPhone()">
+                    <i class="fas fa-phone"></i> Appeler
+                </div>
+                <div class="contact-btn" onclick="copyEmail()">
+                    <i class="fas fa-copy"></i> Copier Email
+                </div>
+                <div class="contact-btn" onclick="openGmailDirect()">
+                    <i class="fas fa-envelope"></i> Gmail Direct
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Configuration Getform
-        const FORMI_ENDPOINT = "https://getform.io/f/zbnkqrpa";
-        
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+        // Fonction principale - Ouvre Gmail avec les données du formulaire
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const form = this;
-            const submitBtn = document.getElementById('submitBtn');
+            // Récupérer les valeurs
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subjectSelect = document.getElementById('subject');
+            const subject = subjectSelect.value || 'Message depuis portfolio';
+            const message = document.getElementById('message').value.trim();
+            
+            // Validation
+            if (!name || !email || !message) {
+                alert('Veuillez remplir tous les champs obligatoires (*)');
+                return;
+            }
+            
+            if (!isValidEmail(email)) {
+                alert('Veuillez entrer une adresse email valide');
+                return;
+            }
+            
+            // Préparer le message pour Gmail
+            const emailBody = `
+Nom: ${name}
+Email: ${email}
+
+Message:
+${message}
+
+---
+Envoyé depuis votre portfolio
+            `.trim();
+            
+            // Encoder pour URL
+            const encodedSubject = encodeURIComponent(subject);
+            const encodedBody = encodeURIComponent(emailBody);
+            
+            // Ouvrir Gmail
+            const gmailUrl = `mailto:carteat22@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
+            
+            // Changer le texte du bouton
             const btnText = document.getElementById('btnText');
-            const statusDiv = document.getElementById('statusMessage');
+            const originalText = btnText.textContent;
+            btnText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Ouverture de Gmail...';
             
-            // Désactiver le bouton
-            submitBtn.disabled = true;
-            const originalBtnHTML = btnText.innerHTML;
-            btnText.innerHTML = '<div class="spinner"></div> Envoi en cours...';
-            
-            // Cacher les anciens messages
-            statusDiv.style.display = 'none';
-            
-            try {
-                // Récupérer les données du formulaire
-                const formData = new FormData(form);
+            // Ouvrir Gmail
+            setTimeout(() => {
+                window.location.href = gmailUrl;
                 
-                // Envoyer à Getform
-                const response = await fetch(FORMI_ENDPOINT, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                if (response.ok) {
-                    // Succès
-                    statusDiv.innerHTML = `
-                        <div style="display: flex; align-items: center; gap: 15px;">
-                            <i class="fas fa-check-circle" style="font-size: 24px; color: #2ecc71;"></i>
-                            <div>
-                                <h4 style="margin-bottom: 5px;">✅ Message envoyé avec succès !</h4>
-                                <p>Je vous répondrai dès que possible à l'adresse email fournie.</p>
-                                <p style="margin-top: 10px; font-size: 14px;">
-                                    <i class="fas fa-envelope"></i> 
-                                    Destinataire : <strong>carteat22@gmail.com</strong>
-                                </p>
-                            </div>
-                        </div>
-                    `;
-                    statusDiv.className = 'status-message success';
-                    statusDiv.style.display = 'block';
+                // Réinitialiser le bouton après 3 secondes
+                setTimeout(() => {
+                    btnText.innerHTML = originalText;
                     
                     // Réinitialiser le formulaire
-                    form.reset();
+                    document.getElementById('contactForm').reset();
                     
-                    // Confirmation visuelle
-                    submitBtn.style.background = 'linear-gradient(135deg, #2ecc71, #27ae60)';
-                    setTimeout(() => {
-                        submitBtn.style.background = 'linear-gradient(135deg, #3498db, #2c3e50)';
-                    }, 2000);
-                    
-                } else {
-                    throw new Error(`Erreur HTTP ${response.status}`);
-                }
-                
-            } catch (error) {
-                console.error('Erreur:', error);
-                
-                // En cas d'erreur, offrir l'alternative mailto
-                statusDiv.innerHTML = `
-                    <div style="display: flex; align-items: center; gap: 15px;">
-                        <i class="fas fa-exclamation-triangle" style="font-size: 24px; color: #e74c3c;"></i>
-                        <div>
-                            <h4 style="margin-bottom: 5px;">⚠️ Alternative recommandée</h4>
-                            <p>Pour garantir la réception de votre message :</p>
-                            <button onclick="sendDirectEmail()" style="
-                                background: #3498db;
-                                color: white;
-                                border: none;
-                                padding: 12px 24px;
-                                border-radius: 8px;
-                                font-weight: bold;
-                                cursor: pointer;
-                                margin-top: 10px;
-                                display: flex;
-                                align-items: center;
-                                gap: 10px;
-                            ">
-                                <i class="fas fa-paper-plane"></i>
-                                Ouvrir Gmail directement
-                            </button>
-                        </div>
-                    </div>
-                `;
-                statusDiv.className = 'status-message error';
-                statusDiv.style.display = 'block';
-                
-            } finally {
-                // Réactiver le bouton
-                submitBtn.disabled = false;
-                btnText.innerHTML = originalBtnHTML;
-                
-                // Faire défiler vers le message
-                statusDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
+                    // Message de confirmation
+                    showNotification('✅ Gmail ouvert ! Cliquez sur "Envoyer" pour finaliser.');
+                }, 3000);
+            }, 1000);
         });
         
-        // Alternative mailto direct
-        function sendDirectEmail() {
-            const name = document.getElementById('name').value || 'Visiteur Portfolio';
-            const email = document.getElementById('email').value || '';
-            const subject = document.getElementById('subject').value || 'Message depuis portfolio';
-            const message = document.getElementById('message').value || '';
-            const phone = document.getElementById('phone').value || '';
-            
-            const body = `Nom: ${name}%0D%0AEmail: ${email}%0D%0ATéléphone: ${phone}%0D%0A%0D%0AMessage:%0D%0A${message}`;
-            
-            window.location.href = `mailto:carteat22@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        }
-        
-        // Validation en temps réel
-        const emailInput = document.getElementById('email');
-        emailInput.addEventListener('blur', function() {
-            const email = this.value.trim();
-            if (email && !isValidEmail(email)) {
-                this.style.borderColor = '#e74c3c';
-                this.style.boxShadow = '0 0 0 4px rgba(231, 76, 60, 0.1)';
-            } else {
-                this.style.borderColor = '#e0e0e0';
-                this.style.boxShadow = 'none';
-            }
-        });
-        
+        // Fonction pour valider l'email
         function isValidEmail(email) {
             const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return re.test(email);
         }
         
-        // Animation au chargement
-        window.addEventListener('load', function() {
-            console.log('🚀 Formulaire Getform.io chargé');
-            console.log('📧 Destinataire: carteat22@gmail.com');
-            console.log('🔗 Endpoint: ' + FORMI_ENDPOINT);
-            
-            // Petite animation d'entrée
-            const formContainer = document.querySelector('.form-container');
-            formContainer.style.opacity = '0';
-            formContainer.style.transform = 'translateY(20px)';
-            
-            setTimeout(() => {
-                formContainer.style.transition = 'all 0.8s ease';
-                formContainer.style.opacity = '1';
-                formContainer.style.transform = 'translateY(0)';
-            }, 100);
-        });
+        // Fonction pour copier l'email
+        function copyEmail() {
+            const email = "carteat22@gmail.com";
+            navigator.clipboard.writeText(email)
+                .then(() => {
+                    showNotification('✅ Email copié : carteat22@gmail.com');
+                })
+                .catch(err => {
+                    alert('Copiez manuellement : carteat22@gmail.com');
+                });
+        }
         
-        // Pré-remplir le message si vide avec un template
-        const messageTextarea = document.getElementById('message');
-        messageTextarea.addEventListener('focus', function() {
+        // Fonction WhatsApp
+        function openWhatsApp() {
+            const defaultMessage = "Bonjour Abdelhakim, je vous contacte depuis votre portfolio.";
+            window.open(`https://wa.me/33775863856?text=${encodeURIComponent(defaultMessage)}`, '_blank');
+        }
+        
+        // Fonction Appel téléphonique
+        function callPhone() {
+            if (confirm("Voulez-vous appeler le 07 75 86 38 56 ?")) {
+                window.location.href = 'tel:+33775863856';
+            }
+        }
+        
+        // Fonction pour ouvrir Gmail directement
+        function openGmailDirect() {
+            window.open('https://mail.google.com/mail/?view=cm&fs=1&to=carteat22@gmail.com', '_blank');
+        }
+        
+        // Fonction de notification
+        function showNotification(message) {
+            // Créer l'élément de notification
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #2ecc71;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+                z-index: 10000;
+                animation: slideInRight 0.3s ease-out;
+                max-width: 400px;
+                font-weight: 500;
+            `;
+            
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-check-circle"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Ajouter l'animation CSS
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideInRight {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes slideOutRight {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Retirer après 4 secondes
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease-out';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 4000);
+        }
+        
+        // Amélioration UX : Pré-remplir le message
+        document.getElementById('message').addEventListener('focus', function() {
             if (!this.value.trim()) {
                 this.value = "Bonjour Abdelhakim,\n\n";
             }
         });
+        
+        // Message de bienvenue
+        window.addEventListener('load', function() {
+            console.log('🚀 Formulaire contact chargé');
+            console.log('📧 Destination garantie : carteat22@gmail.com');
+            console.log('📞 Téléphone : 07 75 86 38 56');
+            
+            // Petit effet visuel
+            const container = document.querySelector('.container');
+            container.style.animation = 'slideIn 0.5s ease-out';
+        });
+        
+        // Auto-test au chargement
+        window.onload = function() {
+            // Vérifier si nous sommes en HTTPS (important pour certaines fonctionnalités)
+            if (window.location.protocol !== 'https:' && window.location.hostname !== 'localhost') {
+                console.warn('Pour une meilleure compatibilité, hébergez cette page sur HTTPS');
+            }
+            
+            // Afficher un message d'aide après 2 secondes
+            setTimeout(() => {
+                console.log('💡 Pour tester : Remplissez le formulaire et cliquez sur "Ouvrir Gmail"');
+            }, 2000);
+        };
     </script>
 </body>
 </html>
