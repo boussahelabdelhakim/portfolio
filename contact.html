@@ -3,52 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Direct</title>
+    <title>Contact - carteat22@gmail.com</title>
     <style>
-        /* Mêmes styles que précédemment */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
-        .contact-container { background: white; border-radius: 15px; padding: 40px; width: 100%; max-width: 500px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-        h1 { color: #333; margin-bottom: 20px; text-align: center; }
-        .email-display { background: #f8f9fa; padding: 15px; border-radius: 8px; border: 2px solid #e0e0e0; margin: 20px 0; font-size: 18px; font-weight: bold; color: #2c3e50; text-align: center; }
-        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #ddd; border-radius: 6px; font-size: 16px; }
-        textarea { min-height: 120px; }
-        .submit-btn { background: #2ecc71; color: white; border: none; padding: 14px 30px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
-        .submit-btn:hover { background: #27ae60; }
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .email {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 20px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
     </style>
 </head>
 <body>
-    <div class="contact-container">
-        <h1>📨 Contact Direct</h1>
-        <p style="text-align: center; color: #666; margin-bottom: 20px;">
-            Envoyez directement à <strong>carteat22@gmail.com</strong>
-        </p>
+    <div class="container">
+        <h1>Contactez-moi</h1>
+        <p style="text-align: center;">Envoyez directement à :</p>
+        <div class="email">carteat22@gmail.com</div>
         
-        <!-- Formulaire Netlify Forms (le plus simple) -->
-        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-            <!-- Champ caché pour les bots -->
-            <input type="hidden" name="form-name" value="contact">
-            <p style="display: none;">
-                <label>Ne remplissez pas ceci : <input name="bot-field"></label>
-            </p>
+        <form action="https://formsubmit.co/carteat22@gmail.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="Nouveau message depuis votre site">
             
-            <input type="text" name="name" placeholder="Votre nom *" required>
-            <input type="email" name="email" placeholder="Votre email *" required>
-            <input type="text" name="subject" placeholder="Sujet du message *" required>
-            <textarea name="message" placeholder="Votre message... *" required></textarea>
+            <input type="text" name="name" placeholder="Votre nom" required>
+            <input type="email" name="email" placeholder="Votre email" required>
+            <textarea name="message" placeholder="Votre message" rows="5" required></textarea>
             
-            <button type="submit" class="submit-btn">🚀 Envoyer le message</button>
+            <button type="submit">Envoyer le message</button>
         </form>
         
-        <div style="margin-top: 30px; padding: 15px; background: #f0f7ff; border-radius: 8px;">
-            <p style="margin: 0; font-size: 14px; color: #2c3e50; text-align: center;">
-                💡 <strong>Comment ça marche ?</strong><br>
-                1. Remplissez le formulaire<br>
-                2. Cliquez sur Envoyer<br>
-                3. Je reçois directement à <strong>carteat22@gmail.com</strong><br>
-                <span style="font-size: 12px;">(Configuration requise sur Netlify)</span>
-            </p>
-        </div>
+        <p style="text-align: center; margin-top: 20px; color: #666; font-size: 14px;">
+            Le message sera envoyé directement à carteat22@gmail.com
+        </p>
     </div>
 </body>
 </html>
